@@ -1,0 +1,28 @@
+﻿@model Frosting
+
+@{
+    ViewData["Title"] = "Add a new Frosting";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2 text-dark">
+        <p><h1>Add a new Frosting</h1></p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="submit" value="Create" class="btn btn-success float-end" />
+                        <a class="text-white btn btn-dark float-right" asp-action="Index">Back To List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

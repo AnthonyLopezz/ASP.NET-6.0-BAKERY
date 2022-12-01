@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Frosting>
+
+@{
+    ViewData["Title"] = "List of Frostings";
+    Layout = "~/Views/Shared/_AdmLayout.cshtml";
+}
+    <div class="pagetitle">
+        <h1>Frosting List</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">List</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row col-lg-12">
+            <div class="col">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Frosting in stock</h5>
+
+                        <!-- Default Table -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model)
+                            {
+                                        <tr>
+                                            <th scope="row">@item.Id</th>
+                                            <td>@item.Name</td>
+                                            <td class="text-center align-center d-flex">
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary me-1 btn-sm"> <i class="bi bi-pencil-square"></i> Edit</a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger me-1 text-white btn-sm"> <i class="bi bi-trash"></i> Delete</a>
+                                            </td>
+                                        </tr>
+                            }
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+@await Html.PartialAsync("_Add", "Frosting");
+

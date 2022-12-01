@@ -1,0 +1,69 @@
+﻿@model Cake
+@{
+    ViewData["Title"] = "Cake details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid about py-5">
+    <div class="container">
+        <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+            <h2 class="text-primary font-secondary">Cake & Pricing</h2>
+            <h1 class="display-4 text-uppercase">@Model.Name</h1>
+        </div>
+        <div class="tab-class text-center">
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div class="row g-3 mt-4">
+                        <div class="col-md-8 offset-2">
+                            <div class="card mb-12">
+                                <div class="row g-0">
+                                    <div class="col-md-12">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="@Model.ImageURL" width="100%" alt="@Model.Name">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                <b>Flavor: </b>
+                                                <a>
+                                                    @Model.Flavor.Name
+                                                </a>
+                                            </p>
+                                            <p class="card-text">
+                                                <b>Frosting: </b>
+                                                <a>
+                                                    @Model.Frosting.Name
+                                                </a>
+                                            </p>
+                                            <p class="card-text">
+                                                <b>Frosting: </b>
+                                                <a>
+                                                    @Model.Portion.Name
+                                                </a>
+                                            </p>
+                                            <p class="card-text"><b>Shape: </b>@Model.Shape</p>
+                                            <p class="card-text"><b>Price: </b>@Model.Price</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card-footer">
+                                            <p class="card-text">
+                                                <a class="btn btn-outline-primary float-right" asp-action="Index">
+                                                    Back to List
+                                                </a>
+                                                <a class="text-white btn btn-dark" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id">
+                                                    <i class="bi bi-cart-plus"></i>Add to Cart (Price @Model.Price.ToString("c")
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

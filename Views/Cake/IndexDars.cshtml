@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Cake>
+@{
+    ViewData["Title"] = "List of Cake";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Products Start -->
+    <div class="container-fluid about py-5">
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Menu & Pricing</h2>
+                <h1 class="display-4 text-uppercase">Explore Our Cakes</h1>
+            </div>
+            <div class="tab-class text-center">
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                        <div class="row g-3">
+                            @foreach (var item in Model)
+                            {
+                            <div class="col-lg-4">
+                                <div class="d-flex h-100">
+                                    <div class="flex-shrink-0">
+                                        <img class="img-fluid" src="@item.ImageURL" width="100%" alt="@item.Name" style="width: 200px;">
+                                        
+                                        <h4 class="bg-dark text-primary p-2 m-0">$ @item.Price <a asp-action="Detail" asp-route-id="@item.Id" class="btn-dark bg-dark text-primary p-2 m-0 btn-sm">Details</a> <a btn-dark btn-sm class="text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id">
+                                <i class="bi bi-cart-plus"></i></a></h4>
+                                        
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center text-start bg-secondary border-inner px-4">
+                                        <h5 class="text-uppercase">@item.Name</h5>
+                                        <span>Shape: @item.Shape</span>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Products End -->
